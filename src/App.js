@@ -20,6 +20,7 @@ function App() {
       <Editor
         height="90vh"
         defaultLanguage="json"
+        theme="vs-dark"
         defaultValue={JSON.stringify(value, null, 2)}
         beforeMount={(monaco) => {
           //var modelUri = monaco.Uri.parse("a://b/foo.json"); // a made up unique URI for our model
