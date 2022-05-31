@@ -3,12 +3,24 @@ import "./App.css";
 import Editor from "@monaco-editor/react";
 
 function App() {
+  const value = {
+    pipeline: [
+      {
+        action: "elementsAggregation",
+        outputAlias: "elementsAggregationOutput",
+        params: {
+          modelKey: "banner",
+          aggregationPipeline: [],
+        },
+      },
+    ],
+  };
   return (
     <div className="App">
       <Editor
         height="90vh"
         defaultLanguage="json"
-        defaultValue="// some comment"
+        defaultValue={JSON.stringify(value, null, 2)}
         beforeMount={(monaco) => {
           //var modelUri = monaco.Uri.parse("a://b/foo.json"); // a made up unique URI for our model
 
