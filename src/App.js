@@ -1,6 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Editor from "@monaco-editor/react";
+import schema from "./schema.json";
+//import schema from "./ic-function-schema.json";
 
 function App() {
   const value = {
@@ -15,6 +17,7 @@ function App() {
       },
     ],
   };
+
   return (
     <div className="App">
       <Editor
@@ -29,19 +32,10 @@ function App() {
             validate: true,
             schemas: [
               {
-                uri: "http://myserver/foo-schema.json", // id of the first schema
+                uri: "http://json-schema.org/draft-04/schema#", // id of the first schema
                 //fileMatch: [modelUri.toString()], // associate with our model
-                schema: {
-                  type: "object",
-                  properties: {
-                    p1: {
-                      enum: ["v1", "v2"],
-                    },
-                    p2: {
-                      $ref: "http://myserver/bar-schema.json", // reference the second schema
-                    },
-                  },
-                },
+                fileMatch: ["*"],
+                schema: schema,
               },
             ],
           });

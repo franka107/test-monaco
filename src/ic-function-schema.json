@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/ic-function",
+  "type": "object",
+  "default": {},
+  "title": "IC Function Schema",
+
+  "additionalProperties": {
+    "patternProperties": {
+      "^\\|\\$\\|": {
+        "type": "object",
+
+        "allOf": [
+          {
+            "$ref": "#"
+          }
+        ],
+        "properties": {
+          "fnKey": {
+            "type": "string",
+            "default": "",
+            "title": "The fnKey Schema",
+            "examples": ["concatText", "mathOperation"]
+          }
+        }
+      }
+    }
+  },
+
+  "patternProperties": {
+    "^\\|\\$\\|": {
+      "type": "object",
+
+      "allOf": [
+        {
+          "$ref": "#"
+        }
+      ],
+      "properties": {
+        "fnKey": {
+          "type": "string",
+          "default": "",
+          "title": "The fnKey Schema",
+          "examples": ["concatText", "mathOperation"]
+        }
+      }
+    }
+  }
+}
