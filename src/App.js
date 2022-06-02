@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Editor from "@monaco-editor/react";
 import schema from "./schema.json";
@@ -6,6 +5,7 @@ import schema from "./schema.json";
 
 function App() {
   const value = {
+    schema: {},
     pipeline: [
       {
         action: "elementsAggregation",
@@ -21,7 +21,7 @@ function App() {
   return (
     <div className="App">
       <Editor
-        height="90vh"
+        height="100vh"
         defaultLanguage="json"
         theme="vs-dark"
         defaultValue={JSON.stringify(value, null, 2)}

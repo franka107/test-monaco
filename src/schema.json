@@ -1,7 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "http://example.com/example.json",
-
   "type": "object",
   "default": {},
   "title": "Root Schema",
@@ -31,399 +30,215 @@
         "properties": {
           "action": {
             "type": "string",
-            "title": "The action Schema",
+            "description": "The action Schema",
             "enum": [
-              "executeFunction",
-              "updateElementById",
               "elementsAggregation",
-              "resolveFirstElementOfOutputArray"
-            ]
-          },
-          "params": {
-            "type": "object",
-            "title": "The params Schema",
-            "properties": {
-              "functionKey": {
-                "type": "string",
-                "default": "",
-                "title": "The functionKey Schema",
-                "examples": ["resolveAuth"]
-              },
-              "params": {
-                "type": "object",
-                "default": {},
-                "title": "The params Schema",
-                "required": ["|\u0026|token", "roles"],
-                "properties": {
-                  "|\u0026|token": {
-                    "type": "string",
-                    "default": "",
-                    "title": "The |\u0026|token Schema",
-                    "examples": ["\u0026.clientHeaders.token"]
-                  },
-                  "roles": {
-                    "type": "array",
-                    "default": [],
-                    "title": "The roles Schema",
-                    "items": {
-                      "type": "string",
-                      "default": "",
-                      "title": "A Schema",
-                      "examples": ["ADMIN"]
-                    },
-                    "examples": [["ADMIN"]]
-                  }
-                },
-                "examples": [
-                  {
-                    "|\u0026|token": "\u0026.clientHeaders.token",
-                    "roles": ["ADMIN"]
-                  }
-                ]
-              },
-              "modelKey": {
-                "type": "string",
-                "title": "The modelKey Schema",
-                "examples": ["banner"]
-              },
-              "itemId": {
-                "type": "string",
-                "default": "",
-                "title": "The itemId Schema",
-                "examples": ["\u0026.clientParams._id"]
-              },
-              "updateData": {
-                "type": "object",
-                "default": {},
-                "title": "The updateData Schema",
-                "required": [
-                  "|\u0026|title",
-                  "|\u0026|description",
-                  "|\u0026|buttonText",
-                  "|\u0026|to",
-                  "|\u0026|imgUrl"
-                ],
-                "properties": {
-                  "|\u0026|title": {
-                    "type": "string",
-                    "default": "",
-                    "title": "The |\u0026|title Schema",
-                    "examples": ["\u0026.clientParams.title"]
-                  },
-                  "|\u0026|description": {
-                    "type": "string",
-                    "default": "",
-                    "title": "The |\u0026|description Schema",
-                    "examples": ["\u0026.clientParams.description"]
-                  },
-                  "|\u0026|buttonText": {
-                    "type": "string",
-                    "default": "",
-                    "title": "The |\u0026|buttonText Schema",
-                    "examples": ["\u0026.clientParams.buttonText"]
-                  },
-                  "|\u0026|to": {
-                    "type": "string",
-                    "default": "",
-                    "title": "The |\u0026|to Schema",
-                    "examples": ["\u0026.clientParams.to"]
-                  },
-                  "|\u0026|imgUrl": {
-                    "type": "string",
-                    "default": "",
-                    "title": "The |\u0026|imgUrl Schema",
-                    "examples": ["\u0026.clientParams.imgUrl"]
-                  }
-                },
-                "examples": [
-                  {
-                    "|\u0026|title": "\u0026.clientParams.title",
-                    "|\u0026|description": "\u0026.clientParams.description",
-                    "|\u0026|buttonText": "\u0026.clientParams.buttonText",
-                    "|\u0026|to": "\u0026.clientParams.to",
-                    "|\u0026|imgUrl": "\u0026.clientParams.imgUrl"
-                  }
-                ]
-              },
-              "aggregationPipeline": {
-                "type": "array",
-                "default": [],
-                "title": "The aggregationPipeline Schema",
-                "items": {
-                  "type": "object",
-                  "default": {},
-                  "title": "A Schema",
-                  "required": ["$match"],
-                  "properties": {
-                    "$match": {
-                      "type": "object",
-                      "default": {},
-                      "title": "The $match Schema",
-                      "required": ["|$|_id"],
-                      "properties": {
-                        "|$|_id": {
-                          "type": "object",
-                          "default": {},
-                          "title": "The |$|_id Schema",
-                          "required": ["fnKey", "params"],
-                          "properties": {
-                            "fnKey": {
-                              "type": "string",
-                              "default": "",
-                              "title": "The fnKey Schema",
-                              "examples": ["parseData"]
-                            },
-                            "params": {
-                              "type": "object",
-                              "default": {},
-                              "title": "The params Schema",
-                              "required": ["type", "|\u0026|data"],
-                              "properties": {
-                                "type": {
-                                  "type": "string",
-                                  "default": "",
-                                  "title": "The type Schema",
-                                  "examples": ["objectid"]
-                                },
-                                "|\u0026|data": {
-                                  "type": "string",
-                                  "default": "",
-                                  "title": "The |\u0026|data Schema",
-                                  "examples": ["\u0026.clientParams._id"]
-                                }
-                              },
-                              "examples": [
-                                {
-                                  "type": "objectid",
-                                  "|\u0026|data": "\u0026.clientParams._id"
-                                }
-                              ]
-                            }
-                          },
-                          "examples": [
-                            {
-                              "fnKey": "parseData",
-                              "params": {
-                                "type": "objectid",
-                                "|\u0026|data": "\u0026.clientParams._id"
-                              }
-                            }
-                          ]
-                        }
-                      },
-                      "examples": [
-                        {
-                          "|$|_id": {
-                            "fnKey": "parseData",
-                            "params": {
-                              "type": "objectid",
-                              "|\u0026|data": "\u0026.clientParams._id"
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  },
-                  "examples": [
-                    {
-                      "$match": {
-                        "|$|_id": {
-                          "fnKey": "parseData",
-                          "params": {
-                            "type": "objectid",
-                            "|\u0026|data": "\u0026.clientParams._id"
-                          }
-                        }
-                      }
-                    }
-                  ]
-                },
-                "examples": [
-                  [
-                    {
-                      "$match": {
-                        "|$|_id": {
-                          "fnKey": "parseData",
-                          "params": {
-                            "type": "objectid",
-                            "|\u0026|data": "\u0026.clientParams._id"
-                          }
-                        }
-                      }
-                    }
-                  ]
-                ]
-              }
-            },
-            "examples": [
-              {
-                "functionKey": "resolveAuth",
-                "params": {
-                  "|\u0026|token": "\u0026.clientHeaders.token",
-                  "roles": ["ADMIN"]
-                }
-              },
-              {
-                "modelKey": "banner",
-                "itemId": "\u0026.clientParams._id",
-                "updateData": {
-                  "|\u0026|title": "\u0026.clientParams.title",
-                  "|\u0026|description": "\u0026.clientParams.description",
-                  "|\u0026|buttonText": "\u0026.clientParams.buttonText",
-                  "|\u0026|to": "\u0026.clientParams.to",
-                  "|\u0026|imgUrl": "\u0026.clientParams.imgUrl"
-                }
-              },
-              {
-                "modelKey": "banner",
-                "aggregationPipeline": [
-                  {
-                    "$match": {
-                      "|$|_id": {
-                        "fnKey": "parseData",
-                        "params": {
-                          "type": "objectid",
-                          "|\u0026|data": "\u0026.clientParams._id"
-                        }
-                      }
-                    }
-                  }
-                ]
-              },
-              {}
+              "registerElement",
+              "updateElementById",
+              "removeElementById"
             ]
           },
           "outputAlias": {
             "type": "string",
-            "title": "The outputAlias Schema",
+            "description": "The outputAlias Schema",
             "examples": [
               "elementsAggregationOutput",
+              "registerElementOutput",
+              "updateElementByIdOutput",
+              "removeElementByIdOutput",
               "resolveFirstElementOfOutputArrayOutput"
             ]
+          },
+          "params": {
+            "type": "object",
+            "description": "The params Schema",
+            "properties": {},
+            "examples": []
           }
         },
-        "if": {
-          "properties": {
-            "action": { "const": "elementsAggregation" }
-          }
-        },
-        "then": {
-          "properties": {
-            "params": {
+        "allOf": [
+          {
+            "if": {
               "properties": {
-                "soloEnElementsAgregation": {
-                  "type": "string",
-                  "default": "",
-                  "title": "The functionKey Schema",
-                  "examples": ["ganamos"]
-                }
+                "action": { "const": "elementsAggregation" }
               }
-            }
-          }
-        },
-
-        "examples": [
-          {
-            "action": "executeFunction",
-            "params": {
-              "functionKey": "resolveAuth",
-              "params": {
-                "|\u0026|token": "\u0026.clientHeaders.token",
-                "roles": ["ADMIN"]
-              }
-            }
-          },
-          {
-            "action": "updateElementById",
-            "params": {
-              "modelKey": "banner",
-              "itemId": "\u0026.clientParams._id",
-              "updateData": {
-                "|\u0026|title": "\u0026.clientParams.title",
-                "|\u0026|description": "\u0026.clientParams.description",
-                "|\u0026|buttonText": "\u0026.clientParams.buttonText",
-                "|\u0026|to": "\u0026.clientParams.to",
-                "|\u0026|imgUrl": "\u0026.clientParams.imgUrl"
-              }
-            }
-          },
-          {
-            "action": "elementsAggregation",
-            "outputAlias": "elementsAggregationOutput",
-            "params": {
-              "modelKey": "banner",
-              "aggregationPipeline": [
-                {
-                  "$match": {
-                    "|$|_id": {
-                      "fnKey": "parseData",
-                      "params": {
-                        "type": "objectid",
-                        "|\u0026|data": "\u0026.clientParams._id"
-                      }
+            },
+            "then": {
+              "properties": {
+                "params": {
+                  "required": ["modelKey", "aggregationPipeline"],
+                  "properties": {
+                    "modelKey": {
+                      "type": "string",
+                      "description": "The model name",
+                      "examples": ["modelName"]
+                    },
+                    "aggregationPipeline": {
+                      "type": "array",
+                      "description": "The agregation pipeline",
+                      "examples": [
+                        [],
+                        [
+                          {
+                            "$match": {
+                              "|$|_id": {
+                                "fnKey": "parseData",
+                                "params": {
+                                  "type": "objectid",
+                                  "|&|data": "&.clientParams.id"
+                                }
+                              }
+                            }
+                          }
+                        ]
+                      ]
                     }
                   }
                 }
-              ]
+              }
             }
           },
           {
-            "action": "resolveFirstElementOfOutputArray",
-            "outputAlias": "resolveFirstElementOfOutputArrayOutput",
-            "params": {}
+            "if": {
+              "properties": {
+                "action": { "const": "registerElement" }
+              }
+            },
+            "then": {
+              "properties": {
+                "params": {
+                  "required": ["modelKey", "mappingSetup"],
+                  "properties": {
+                    "modelKey": {
+                      "type": "string",
+                      "description": "The model name",
+                      "examples": ["modelName"]
+                    },
+                    "mappingSetup": {
+                      "type": "object",
+                      "description": "The mapping setup",
+                      "examples": [
+                        {
+                          "|&|param1": "&.clientParams.param1",
+                          "|&|param2": "&.clientParams.param2"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "action": { "const": "updateElementById" }
+              }
+            },
+            "then": {
+              "properties": {
+                "params": {
+                  "required": ["modelKey", "itemId", "updateData"],
+                  "properties": {
+                    "modelKey": {
+                      "type": "string",
+                      "description": "The model name",
+                      "examples": ["modelName"]
+                    },
+                    "itemId": {
+                      "type": "string",
+                      "description": "The item id",
+                      "examples": ["&.clientParams.id"]
+                    },
+                    "updateData": {
+                      "type": "object",
+                      "description": "The update data",
+                      "examples": [
+                        {
+                          "|&|param1": "&.clientParams.param1",
+                          "|&|param2": "&.clientParams.param2"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "action": { "const": "removeElementById" }
+              }
+            },
+            "then": {
+              "properties": {
+                "params": {
+                  "required": ["modelKey", "itemId"],
+                  "properties": {
+                    "modelKey": {
+                      "type": "string",
+                      "description": "The model name",
+                      "examples": ["modelName"]
+                    },
+                    "itemId": {
+                      "type": "string",
+                      "description": "The item id",
+                      "examples": ["&.clientParams.id"]
+                    }
+                  }
+                }
+              }
+            }
           }
         ]
       },
       "examples": [
         [
           {
-            "action": "executeFunction",
-            "params": {
-              "functionKey": "resolveAuth",
-              "params": {
-                "|\u0026|token": "\u0026.clientHeaders.token",
-                "roles": ["ADMIN"]
-              }
-            }
-          },
-          {
-            "action": "updateElementById",
-            "params": {
-              "modelKey": "banner",
-              "itemId": "\u0026.clientParams._id",
-              "updateData": {
-                "|\u0026|title": "\u0026.clientParams.title",
-                "|\u0026|description": "\u0026.clientParams.description",
-                "|\u0026|buttonText": "\u0026.clientParams.buttonText",
-                "|\u0026|to": "\u0026.clientParams.to",
-                "|\u0026|imgUrl": "\u0026.clientParams.imgUrl"
-              }
-            }
-          },
-          {
             "action": "elementsAggregation",
             "outputAlias": "elementsAggregationOutput",
             "params": {
-              "modelKey": "banner",
-              "aggregationPipeline": [
-                {
-                  "$match": {
-                    "|$|_id": {
-                      "fnKey": "parseData",
-                      "params": {
-                        "type": "objectid",
-                        "|\u0026|data": "\u0026.clientParams._id"
-                      }
-                    }
-                  }
-                }
-              ]
+              "modelKey": "modelName",
+              "aggregationPipeline": []
             }
-          },
+          }
+        ],
+        [
           {
-            "action": "resolveFirstElementOfOutputArray",
-            "outputAlias": "resolveFirstElementOfOutputArrayOutput",
-            "params": {}
+            "action": "registerElement",
+            "outputAlias": "registerElementOutput",
+            "params": {
+              "modelKey": "modelName",
+              "mappingSetup": {
+                "|&|param1": "&.clientParams.param1",
+                "|&|param2": "&.clientParams.param2"
+              }
+            }
+          }
+        ],
+        [
+          {
+            "action": "updateElementById",
+            "outputAlias": "updateElementByIdOutput",
+            "params": {
+              "modelKey": "modelName",
+              "itemId": "&.clientParams.id",
+              "updateData": {
+                "|&|param1": "&.clientParams.param1",
+                "|&|param2": "&.clientParams.param2"
+              }
+            }
+          }
+        ],
+        [
+          {
+            "action": "removeElementById",
+            "outputAlias": "removeElementByIdOutput",
+            "params": {
+              "modelKey": "modelName",
+              "itemId": "&.clientParams.id"
+            }
           }
         ]
       ]
@@ -431,55 +246,61 @@
   },
   "examples": [
     {
+      "schema": {},
       "pipeline": [
-        {
-          "action": "executeFunction",
-          "params": {
-            "functionKey": "resolveAuth",
-            "params": {
-              "|\u0026|token": "\u0026.clientHeaders.token",
-              "roles": ["ADMIN"]
-            }
-          }
-        },
-        {
-          "action": "updateElementById",
-          "params": {
-            "modelKey": "banner",
-            "itemId": "\u0026.clientParams._id",
-            "updateData": {
-              "|\u0026|title": "\u0026.clientParams.title",
-              "|\u0026|description": "\u0026.clientParams.description",
-              "|\u0026|buttonText": "\u0026.clientParams.buttonText",
-              "|\u0026|to": "\u0026.clientParams.to",
-              "|\u0026|imgUrl": "\u0026.clientParams.imgUrl"
-            }
-          }
-        },
         {
           "action": "elementsAggregation",
           "outputAlias": "elementsAggregationOutput",
           "params": {
-            "modelKey": "banner",
-            "aggregationPipeline": [
-              {
-                "$match": {
-                  "|$|_id": {
-                    "fnKey": "parseData",
-                    "params": {
-                      "type": "objectid",
-                      "|\u0026|data": "\u0026.clientParams._id"
-                    }
-                  }
-                }
-              }
-            ]
+            "modelKey": "modelName",
+            "aggregationPipeline": []
           }
-        },
+        }
+      ]
+    },
+    {
+      "schema": {},
+      "pipeline": [
         {
-          "action": "resolveFirstElementOfOutputArray",
-          "outputAlias": "resolveFirstElementOfOutputArrayOutput",
-          "params": {}
+          "action": "registerElement",
+          "outputAlias": "registerElementOutput",
+          "params": {
+            "modelKey": "modelName",
+            "mappingSetup": {
+              "|&|param1": "&.clientParams.param1",
+              "|&|param2": "&.clientParams.param2"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "schema": {},
+      "pipeline": [
+        {
+          "action": "updateElementById",
+          "outputAlias": "updateElementByIdOutput",
+          "params": {
+            "modelKey": "modelName",
+            "itemId": "&.clientParams.id",
+            "updateData": {
+              "|&|param1": "&.clientParams.param1",
+              "|&|param2": "&.clientParams.param2"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "schema": {},
+      "pipeline": [
+        {
+          "action": "removeElementById",
+          "outputAlias": "removeElementByIdOutput",
+          "params": {
+            "modelKey": "modelName",
+            "itemId": "&.clientParams.id"
+          }
         }
       ]
     }
