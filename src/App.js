@@ -1,11 +1,16 @@
 import "./App.css";
 import Editor from "@monaco-editor/react";
-import schema from "./schema.json";
-//import schema from "./ic-function-schema.json";
+//import schema from "./old-schema.json";
+
+import schema from "./ic-function-schema.json";
 
 function App() {
   const value = {
-    schema: {},
+    schema: {
+      asd: {
+        "|$|fnKey": {},
+      },
+    },
     pipeline: [
       {
         action: "elementsAggregation",
@@ -16,6 +21,19 @@ function App() {
         },
       },
     ],
+    "|$|pipeline": {
+      fnKey: "arrayRootMap",
+      "|$|params": {
+        fnKey: "concatText",
+
+        "|$|params": {
+          fnKey: "mathOperation",
+        },
+      },
+      params: {
+        "|$|params": {},
+      },
+    },
   };
 
   return (

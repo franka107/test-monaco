@@ -14,19 +14,7 @@
         "type": "object",
         "title": "A Schema",
         "required": ["action", "params"],
-        "patternProperties": {
-          "^|$|": {
-            "type": "object",
-            "properties": {
-              "fnKey": {
-                "type": "string",
-                "default": "",
-                "title": "The fnKey Schema",
-                "examples": ["concatText", "mathOperation"]
-              }
-            }
-          }
-        },
+
         "properties": {
           "action": {
             "type": "string",
@@ -202,9 +190,7 @@
               "modelKey": "modelName",
               "aggregationPipeline": []
             }
-          }
-        ],
-        [
+          },
           {
             "action": "registerElement",
             "outputAlias": "registerElementOutput",
@@ -215,9 +201,7 @@
                 "|&|param2": "&.clientParams.param2"
               }
             }
-          }
-        ],
-        [
+          },
           {
             "action": "updateElementById",
             "outputAlias": "updateElementByIdOutput",
@@ -229,9 +213,7 @@
                 "|&|param2": "&.clientParams.param2"
               }
             }
-          }
-        ],
-        [
+          },
           {
             "action": "removeElementById",
             "outputAlias": "removeElementByIdOutput",
@@ -246,7 +228,6 @@
   },
   "examples": [
     {
-      "schema": {},
       "pipeline": [
         {
           "action": "elementsAggregation",
@@ -255,12 +236,7 @@
             "modelKey": "modelName",
             "aggregationPipeline": []
           }
-        }
-      ]
-    },
-    {
-      "schema": {},
-      "pipeline": [
+        },
         {
           "action": "registerElement",
           "outputAlias": "registerElementOutput",
@@ -271,12 +247,7 @@
               "|&|param2": "&.clientParams.param2"
             }
           }
-        }
-      ]
-    },
-    {
-      "schema": {},
-      "pipeline": [
+        },
         {
           "action": "updateElementById",
           "outputAlias": "updateElementByIdOutput",
@@ -288,12 +259,7 @@
               "|&|param2": "&.clientParams.param2"
             }
           }
-        }
-      ]
-    },
-    {
-      "schema": {},
-      "pipeline": [
+        },
         {
           "action": "removeElementById",
           "outputAlias": "removeElementByIdOutput",
